@@ -1,0 +1,55 @@
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[alias]
+        # Shortening aliases
+        a = add
+        au = add -u
+        co = checkout
+        cob = checkout -b
+        f = fetch -p
+        ci = commit
+        c = commit --verbose
+        cm = commit -m
+        cam = commit -a -m
+
+        d = diff
+        ds = diff --stat
+        dc = diff --cached
+        dbname = diff --name-status # <b1>..<b2>
+        db = diff # <b1>..<b2>
+
+        s = status -s
+
+        # Feature Improving aliases
+        st = status -sb
+        ap = add -p
+
+        # list branches sorted by last modified
+        b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+        # Complex aliases
+        plog = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'
+        tlog = log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        rank = shortlog -sn --no-merges
+        name = log --name-only
+
+        # list aliases
+        la = "!git config -l | grep alias | cut -c 7-"
+[push]
+        default = simple
